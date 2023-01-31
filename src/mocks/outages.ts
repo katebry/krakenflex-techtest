@@ -1,4 +1,4 @@
-import {OutagesInterface} from '../../constants/types'
+import {OutagesInterface} from '../constants/types'
 
 export const mockOutages: OutagesInterface[] = [
     {

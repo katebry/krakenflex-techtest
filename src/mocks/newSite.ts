@@ -1,4 +1,4 @@
-import {OutageSite} from "../../constants/types";
+import {OutageSite} from "../constants/types";
 
 export const newSiteInfo: OutageSite[] = [
         {

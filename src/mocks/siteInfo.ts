@@ -1,4 +1,4 @@
-import {SiteInfoInterface} from "../../constants/types";
+import {SiteInfoInterface} from "../constants/types";
 
 export const mockSiteInfo: SiteInfoInterface = {
     "id": "kingfisher",
