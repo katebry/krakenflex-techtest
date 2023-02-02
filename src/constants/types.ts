@@ -15,7 +15,7 @@ interface SiteInfoInterface {
     devices: DeviceInterface[];
 }
 
-interface OutageSite {
+interface OutageSiteInterface {
     id: string;
     name: string;
     begin: string;
@@ -24,4 +24,4 @@ interface OutageSite {
 
 const earliestValidDate = '2022-01-01T00:00:00.000Z';
 
-export {OutagesInterface, SiteInfoInterface, OutageSite, earliestValidDate};
+export {OutagesInterface, DeviceInterface, SiteInfoInterface, OutageSiteInterface, earliestValidDate};

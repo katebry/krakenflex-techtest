@@ -1,6 +1,6 @@
-import {OutageSite} from "../constants/types";
+import {OutageSiteInterface} from "../constants/types";
 
-export const newSiteInfo: OutageSite[] = [
+export const formattedSiteInfo: OutageSiteInterface[] = [
         {
             "id": "002b28fc-283c-47ec-9af2-ea287336dc1b",
             "name": "Battery 1",

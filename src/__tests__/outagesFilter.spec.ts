@@ -38,7 +38,7 @@ describe('Utility functions', () => {
         expect(outagesFilter(inDateMockOutagesWithoutMatchingId, mockSiteInfoOutages)).toEqual(expectedRes)
     })
 
-    test('when the outages passed in do have an id that matches the list of devices in the site information result, these are returned', () => {
+    test('when the outages passed in have an id that matches the list of devices in the site information result, these are returned', () => {
         const expectedRes = [
             {
                 "id": "002b28fc-283c-47ec-9af2-ea287336dc1b",
