@@ -32,3 +32,52 @@ export const mockOutages: OutagesInterface[] = [
         "end": "2022-10-13T04:05:10.044Z"
     }
 ]
+
+export const outOfDateMockOutages: OutagesInterface[] = [
+    {
+        "id": "086b0d53-b311-4441-aaf3-935646f03d4d",
+        "begin": "2021-07-12T16:31:47.254Z",
+        "end": "2021-10-13T04:05:10.044Z"
+    },
+    {
+        "id": "27820d4a-1bc4-4fc1-a5f0-bcb3627e94a1",
+        "begin": "2021-07-12T16:31:47.254Z",
+        "end": "2022-10-13T04:05:10.044Z"
+    }
+]
+
+export const inDateMockOutages: OutagesInterface[] = [
+    {
+        "id": "002b28fc-283c-47ec-9af2-ea287336dc1b",
+        "begin": "2023-07-12T16:31:47.254Z",
+        "end": "2023-10-13T04:05:10.044Z"
+    },
+    {
+        "id": "002b28fc-283c-47ec-9af2-ea287336dc1b",
+        "begin": "2023-07-12T16:31:47.254Z",
+        "end": "2023-10-13T04:05:10.044Z"
+    },
+    {
+        "id": "086b0d53-b311-4441-aaf3-935646f03d4d",
+        "begin": "2022-01-01T00:00:00.000Z",
+        "end": "2023-01-01T00:00:00.000Z"
+    }
+]
+
+export const inDateMockOutagesWithoutMatchingId: OutagesInterface[] = [
+    {
+        "id": "332b28fc-283c-47ec-9af2-ea287336dc1b",
+        "begin": "2023-07-12T16:31:47.254Z",
+        "end": "2023-10-13T04:05:10.044Z"
+    },
+    {
+        "id": "332b28fc-283c-47ec-9af2-ea287336dc1b",
+        "begin": "2023-07-12T16:31:47.254Z",
+        "end": "2023-10-13T04:05:10.044Z"
+    },
+    {
+        "id": "336b0d53-b311-4441-aaf3-935646f03d4d",
+        "begin": "2022-01-01T00:00:00.000Z",
+        "end": "2023-01-01T00:00:00.000Z"
+    }
+]
