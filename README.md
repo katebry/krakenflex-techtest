@@ -19,6 +19,9 @@ URL=<URL value goes here>
 SITE_ID=<Site id value goes here>
 ```
 
+_If you have any problems loading the environment variables, run the following command for each var in your Terminal:_
+
+`export API_KEY=<your_value>`
 
 
 ## Tasks
@@ -29,3 +32,10 @@ SITE_ID=<Site id value goes here>
 4. For the remaining filtered outages, the display name of the device in the site information should be attached to each appropriate outage
 5. Send this compiled list of outages to the `POST /site-outages/{siteId}` endpoint 
 
+## Running the project
+
+Once you have added your environment variables, to run the project you need to open a Terminal and enter the command `npm run serve` - you should see a logged response appear
+
+The logic that produces this logged response can be found in the `handler.ts` file
+
+To run the tests, run the command `npm run test`
