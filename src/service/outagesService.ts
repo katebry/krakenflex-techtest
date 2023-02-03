@@ -1,5 +1,6 @@
-import {ApiConfigInterface, OutagesInterface, OutageSiteInterface, SiteInfoInterface} from "../constants/types";
+import {ApiConfigInterface, OutagesInterface, OutageSiteInterface, SiteInfoInterface} from "../constants";
 import axios from "axios";
+import {statusCodeHandler} from "../utils";
 
 export const outagesService = {
 
@@ -25,7 +26,7 @@ export const outagesService = {
         return response.data;
     },
 
-    async postSiteOutages(outages:OutageSiteInterface[], config: ApiConfigInterface): Promise<number> {
+    async postSiteOutages(outages:OutageSiteInterface[], config: ApiConfigInterface): Promise<string | number> {
 
         const headers = {
             'accept': '*/*',
@@ -36,7 +37,8 @@ export const outagesService = {
         const outagesToJson = JSON.stringify(outages)
 
         const response = await axios.post(`${config.url}site-outages/${config.siteId}`, outagesToJson, {headers: headers})
-        return response.status;
+
+        return statusCodeHandler(response.status);
     }
 
 }

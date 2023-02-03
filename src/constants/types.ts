@@ -22,12 +22,10 @@ interface OutageSiteInterface {
     end: string;
 }
 
-const earliestValidDate = '2022-01-01T00:00:00.000Z';
-
 interface ApiConfigInterface {
     url: string,
     apiKey: string,
     siteId?: string,
 }
 
-export {OutagesInterface, DeviceInterface, SiteInfoInterface, OutageSiteInterface, earliestValidDate, ApiConfigInterface};
+export {OutagesInterface, DeviceInterface, SiteInfoInterface, OutageSiteInterface, ApiConfigInterface};

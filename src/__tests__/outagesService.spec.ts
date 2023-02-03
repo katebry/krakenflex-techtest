@@ -1,6 +1,6 @@
 import {outagesService} from "../service/outagesService";
 import {formattedSiteInfo, mockOutages, mockSiteInfoOutages} from "../mocks/";
-import {ApiConfigInterface} from "../constants/types";
+import {ApiConfigInterface} from "../constants";
 
 describe('Outages service', () => {
 
