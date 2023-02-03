@@ -1,6 +1,6 @@
 import {outagesService} from "./service/outagesService";
 import {filterOutages, addSiteName} from "./utils"
-import {ApiConfigInterface} from "./constants/types";
+import {ApiConfigInterface} from "./constants";
 
 export const handler = async ():Promise<void> => {
     try {
