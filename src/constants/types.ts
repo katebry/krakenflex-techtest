@@ -24,4 +24,10 @@ interface OutageSiteInterface {
 
 const earliestValidDate = '2022-01-01T00:00:00.000Z';
 
-export {OutagesInterface, DeviceInterface, SiteInfoInterface, OutageSiteInterface, earliestValidDate};
+interface ApiConfigInterface {
+    url: string,
+    apiKey: string,
+    siteId?: string,
+}
+
+export {OutagesInterface, DeviceInterface, SiteInfoInterface, OutageSiteInterface, earliestValidDate, ApiConfigInterface};

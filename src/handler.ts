@@ -1,13 +1,20 @@
-import {endpoints} from "./endpoints";
-import {outagesFilter, siteNameAdder} from "./utils"
+import {outagesService} from "./service/outagesService";
+import {filterOutages, addSiteName} from "./utils"
+import {ApiConfigInterface} from "./constants/types";
 
-export const handler = async () => {
+export const handler = async ():Promise<void> => {
     try {
-        const outagesResponse = await endpoints.getOutages();
-        const siteOutagesResponse = await endpoints.getSiteOutages();
-        const filteredResults = outagesFilter(outagesResponse, siteOutagesResponse)
-        const formattedSiteInfo = siteNameAdder(filteredResults,siteOutagesResponse)
-        const postedData = await endpoints.postSiteOutages(formattedSiteInfo)
+        const config: ApiConfigInterface = {
+        url: process.env.URL || '',
+        apiKey: process.env.API_KEY || '',
+        siteId: process.env.SITE_ID || ''
+        }
+
+        const outagesResponse = await outagesService.getOutages(config);
+        const siteOutagesResponse = await outagesService.getSiteOutages(config);
+        const filteredResults = filterOutages(outagesResponse, siteOutagesResponse)
+        const formattedSiteInfo = addSiteName(filteredResults,siteOutagesResponse)
+        const postedData = await outagesService.postSiteOutages(formattedSiteInfo, config)
         console.log(postedData)
     } catch (error) {
         console.log(error)

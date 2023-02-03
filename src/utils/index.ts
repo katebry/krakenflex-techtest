@@ -1,2 +1,2 @@
-export * from './outagesFilter'
-export * from './siteNameAdder'
+export * from './filterOutages'
+export * from './addSiteName'

@@ -1,6 +1,6 @@
 import {OutageSiteInterface, OutagesInterface, SiteInfoInterface} from "../constants/types";
 
-export const siteNameAdder = (outages: OutagesInterface[], siteInfo: SiteInfoInterface) :OutageSiteInterface[] => {
+export const addSiteName = (outages: OutagesInterface[], siteInfo: SiteInfoInterface) :OutageSiteInterface[] => {
     const {devices} = siteInfo;
 
     const deviceIdAndNameObject: {[key: string]: string} = {}

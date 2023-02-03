@@ -2,13 +2,14 @@ import {
     outOfDateMockOutages,
     inDateMockOutages,
     mockSiteInfoOutages,
-    inDateMockOutagesWithoutMatchingId, mockOutages
+    inDateMockOutagesWithoutMatchingId,
+    mockOutages
 } from "../mocks/";
-import {outagesFilter} from "../utils";
+import {filterOutages} from "../utils";
 
 describe('Utility functions', () => {
     test('when data with out-of-date outages is passed in, an empty array is returned', () => {
-        expect(outagesFilter(outOfDateMockOutages, mockSiteInfoOutages)).toEqual([]);
+        expect(filterOutages(outOfDateMockOutages, mockSiteInfoOutages)).toEqual([]);
     });
 
     test('when data without out-of-date outages is passed in, the original input is returned', () => {
@@ -29,13 +30,13 @@ describe('Utility functions', () => {
                 "end": "2023-01-01T00:00:00.000Z"
             }
         ]
-        expect(outagesFilter(inDateMockOutages, mockSiteInfoOutages)).toEqual(expectedRes)
+        expect(filterOutages(inDateMockOutages, mockSiteInfoOutages)).toEqual(expectedRes)
     })
 
     test('when the outages passed in do not have an id that matches the list of devices in the site information result, these are filtered out', () => {
         const expectedRes: [] = []
 
-        expect(outagesFilter(inDateMockOutagesWithoutMatchingId, mockSiteInfoOutages)).toEqual(expectedRes)
+        expect(filterOutages(inDateMockOutagesWithoutMatchingId, mockSiteInfoOutages)).toEqual(expectedRes)
     })
 
     test('when the outages passed in have an id that matches the list of devices in the site information result, these are returned', () => {
@@ -56,6 +57,6 @@ describe('Utility functions', () => {
                 "end": "2022-10-13T04:05:10.044Z"
             }]
 
-        expect(outagesFilter(mockOutages, mockSiteInfoOutages)).toEqual(expectedRes)
+        expect(filterOutages(mockOutages, mockSiteInfoOutages)).toEqual(expectedRes)
     })
 });

@@ -1,6 +1,6 @@
 import {OutagesInterface, earliestValidDate, SiteInfoInterface} from "../constants/types";
 
-export const outagesFilter = (outages: OutagesInterface[], siteInfo: SiteInfoInterface) => {
+export const filterOutages = (outages: OutagesInterface[], siteInfo: SiteInfoInterface) => {
     const siteDeviceIds = siteInfo.devices.map(({id}) => id);
     const parsedEarliestValidDate = Date.parse(earliestValidDate);
 

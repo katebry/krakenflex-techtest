@@ -1,13 +1,20 @@
-import {endpoints} from "../endpoints";
+import {outagesService} from "../service/outagesService";
 import {formattedSiteInfo, mockOutages, mockSiteInfoOutages} from "../mocks/";
+import {ApiConfigInterface} from "../constants/types";
 
-describe('GET - Outages endpoint', () => {
+describe('Outages service', () => {
+
+    const mockConfig: ApiConfigInterface = {
+        url: '',
+        apiKey: '',
+        siteId: ''
+    }
 
     beforeEach(() => {
         jest.restoreAllMocks()
     })
 
-    test('tests that when the outages endpoint is called, a list of outages are returned', async () => {
+    test('GET = getOutages: tests that when the outages endpoint is called, a list of outages are returned', async () => {
 
         const expectedRes = [{
                 "id": "002b28fc-283c-47ec-9af2-ea287336dc1b",
@@ -16,24 +23,17 @@ describe('GET - Outages endpoint', () => {
             }]
 
         const mockedGet = jest
-            .spyOn(endpoints, "getOutages")
+            .spyOn(outagesService, "getOutages")
             .mockImplementation(() => Promise.resolve(mockOutages));
 
-        const getOutagesResponse = endpoints.getOutages();
+        const getOutagesResponse = outagesService.getOutages(mockConfig);
 
         expect(mockedGet).toHaveBeenCalled();
         expect(getOutagesResponse && typeof getOutagesResponse === 'object').toBe(true)
         await expect(getOutagesResponse).resolves.toEqual(expect.objectContaining(expectedRes));
     });
-});
 
-describe('GET - Site Outages endpoint', () => {
-
-    beforeEach(() => {
-        jest.restoreAllMocks()
-    })
-
-    test('tests that when the outages endpoint is called with a specific site, a list of site outages are returned', async () => {
+    test('GET = getSiteOutages: tests that when the outages endpoint is called with a specific site, a list of site outages are returned', async () => {
 
         const expectedRes = {
             "id": "kingfisher",
@@ -51,34 +51,27 @@ describe('GET - Site Outages endpoint', () => {
         }
 
         const mockedGet = jest
-            .spyOn(endpoints, "getSiteOutages")
+            .spyOn(outagesService, "getSiteOutages")
             .mockImplementation(() => Promise.resolve(mockSiteInfoOutages));
 
-        const getSiteOutagesResponse = endpoints.getSiteOutages();
+        const getSiteOutagesResponse = outagesService.getSiteOutages(mockConfig);
 
         expect(mockedGet).toHaveBeenCalled();
         expect(getSiteOutagesResponse && typeof getSiteOutagesResponse === 'object').toBe(true)
         await expect(getSiteOutagesResponse).resolves.toEqual(expectedRes);
     });
-});
 
-describe('POST - Post Site Outages endpoint', () => {
-    beforeEach(() => {
-        jest.restoreAllMocks()
-    })
-
-    test('tests that when the postSiteOutages endpoint is called, a 200 response is returned when valid data is passed in', async () => {
+    test('POST = postSiteOutages: tests that when the postSiteOutages endpoint is called, a 200 response is returned when valid data is passed in', async () => {
 
         const expectedRes = 200
 
         const mockedPost = jest
-            .spyOn(endpoints, "postSiteOutages")
+            .spyOn(outagesService, "postSiteOutages")
             .mockImplementation(() => Promise.resolve(200));
 
-        const postOutagesResponse = endpoints.postSiteOutages(formattedSiteInfo);
+        const postOutagesResponse = outagesService.postSiteOutages(formattedSiteInfo, mockConfig);
 
         expect(mockedPost).toHaveBeenCalled();
         await expect(postOutagesResponse).resolves.toEqual(expectedRes);
     });
-
-})
+});
