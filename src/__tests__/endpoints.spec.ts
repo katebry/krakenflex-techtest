@@ -1,5 +1,5 @@
 import {endpoints} from "../endpoints";
-import {mockOutages, mockSiteInfoOutages} from "../mocks/";
+import {formattedSiteInfo, mockOutages, mockSiteInfoOutages} from "../mocks/";
 
 describe('GET - Outages endpoint', () => {
 
@@ -61,3 +61,24 @@ describe('GET - Site Outages endpoint', () => {
         await expect(getSiteOutagesResponse).resolves.toEqual(expectedRes);
     });
 });
+
+describe('POST - Post Site Outages endpoint', () => {
+    beforeEach(() => {
+        jest.restoreAllMocks()
+    })
+
+    test('tests that when the postSiteOutages endpoint is called, a 200 response is returned when valid data is passed in', async () => {
+
+        const expectedRes = 200
+
+        const mockedPost = jest
+            .spyOn(endpoints, "postSiteOutages")
+            .mockImplementation(() => Promise.resolve(200));
+
+        const postOutagesResponse = endpoints.postSiteOutages(formattedSiteInfo);
+
+        expect(mockedPost).toHaveBeenCalled();
+        await expect(postOutagesResponse).resolves.toEqual(expectedRes);
+    });
+
+})

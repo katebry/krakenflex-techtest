@@ -4,7 +4,7 @@ import {
     mockSiteInfoOutages,
     inDateMockOutagesWithoutMatchingId, mockOutages
 } from "../mocks/";
-import {outagesFilter} from "../utils/outagesFilter";
+import {outagesFilter} from "../utils";
 
 describe('Utility functions', () => {
     test('when data with out-of-date outages is passed in, an empty array is returned', () => {

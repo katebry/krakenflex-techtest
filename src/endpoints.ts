@@ -1,4 +1,4 @@
-import {OutagesInterface, SiteInfoInterface} from "./constants/types";
+import {OutagesInterface, OutageSiteInterface, SiteInfoInterface} from "./constants/types";
 import axios from "axios";
 
 export const endpoints = {
@@ -28,6 +28,23 @@ export const endpoints = {
 
         const response = await axios(`${url}site-info/${siteId}`, {headers: headers})
         return response.data;
+    },
+
+    async postSiteOutages(outages:OutageSiteInterface[]): Promise<number> {
+        const url = process.env.URL;
+        const apiKey = process.env.API_KEY;
+        const siteId = process.env.SITE_ID
+
+        const headers = {
+            'accept': '*/*',
+            'x-api-key': apiKey,
+            'Content-Type': 'application/json'
+        }
+
+        const outagesToJson = JSON.stringify(outages)
+
+        const response = await axios.post(`${url}site-outages/${siteId}`, outagesToJson, {headers: headers})
+        return response.status;
     }
 
 }

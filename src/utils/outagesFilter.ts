@@ -2,8 +2,10 @@ import {OutagesInterface, earliestValidDate, SiteInfoInterface} from "../constan
 
 export const outagesFilter = (outages: OutagesInterface[], siteInfo: SiteInfoInterface) => {
     const siteDeviceIds = siteInfo.devices.map(({id}) => id);
+    const parsedEarliestValidDate = Date.parse(earliestValidDate);
 
     return outages.filter((outage: OutagesInterface) => {
-        return outage.begin >= earliestValidDate && siteDeviceIds.includes(outage.id);
+     const parsedOutageBeginDate = Date.parse(outage.begin)
+        return parsedOutageBeginDate >= parsedEarliestValidDate && siteDeviceIds.includes(outage.id);
     })
 }
